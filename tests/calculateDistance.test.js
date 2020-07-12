@@ -1,4 +1,4 @@
-import { calculateDistance } from '../calculateDistance'
+import { calculateDistance } from '../distanceUtils'
 
 describe('Calculating distance', () => {
   test('Should calculate distance', async () => {

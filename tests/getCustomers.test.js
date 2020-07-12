@@ -1,4 +1,4 @@
-import { getCustomers } from '../getCustomers'
+import { getCustomers } from '../customerUtils'
 import expectedCustomers from './testData/customersJson.json'
 
 describe('Getting customers', () => {
