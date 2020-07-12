@@ -1,4 +1,4 @@
-import { getFilteredAndPretty } from '../getFilteredAndPretty'
+import { getFilteredAndPretty } from '../customerUtils'
 import customers from './testData/customersWithDistanceJson.json'
 
 describe('Getting filtered and prettty customers', () => {

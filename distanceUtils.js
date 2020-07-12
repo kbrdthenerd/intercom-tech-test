@@ -14,7 +14,6 @@ export const calculateDistance = (pointA, pointB) => {
   return radius * centralAngle
 }
 
-
 const degreesToRadians = (degrees) =>  {
   return degrees * (Math.PI/180)
 }

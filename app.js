@@ -1,6 +1,5 @@
-import { getCustomers } from './getCustomers.js'
-import { calculateDistance } from './calculateDistance.js'
-import { getFilteredAndPretty } from './getFilteredAndPretty.js'
+import { getCustomers, writeCustomers, getFilteredAndPretty } from './customerUtils.js'
+import { calculateDistance } from './distanceUtils.js'
 
 (async () => {
   const officeCoordinates = { latitude: 53.339428, longitude: -6.257664 }
@@ -11,5 +10,5 @@ import { getFilteredAndPretty } from './getFilteredAndPretty.js'
     return Object.assign({}, { distance }, customer)
   })
   const prettyAndFiltered = getFilteredAndPretty(customersWithDistances)
-  console.log(prettyAndFiltered)
+  writeCustomers(prettyAndFiltered)
 })()
