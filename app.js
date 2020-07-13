@@ -1,9 +1,11 @@
-import { getCustomers, writeCustomers, getFilteredAndPretty, withDistances } from './customerUtils.js'
+import { getCustomersFromFile, writeCustomersToFile, filterCustomersByDistance, convertCustomersToDisplayStructure } from './customerUtils.js'
 
 (async () => {
   const officeCoordinates = { latitude: 53.339428, longitude: -6.257664 }
-  const customers = await getCustomers()
-  const customersWithDistances = withDistances(customers, officeCoordinates)
-  const prettyAndFiltered = getFilteredAndPretty(customersWithDistances)
-  await writeCustomers(prettyAndFiltered)
+  const maxDistance = 100
+  
+  const customers = await getCustomersFromFile('customers.txt')
+  const filteredCustomer = filterCustomersByDistance(customers, officeCoordinates, maxDistance)
+  const displayCustomers = convertCustomersToDisplayStructure(filteredCustomer)
+  await writeCustomersToFile(displayCustomers, 'output.txt')
 })()

@@ -1,4 +1,4 @@
-export const calculateDistance = (pointA, pointB) => {
+export const calculateDistanceBetweenPoints = (pointA, pointB) => {
   const radius = 6371
   const { longitude: lngA, latitude: latA } = pointA
   const { longitude: lngB, latitude: latB } = pointB
