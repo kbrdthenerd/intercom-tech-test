@@ -15,7 +15,7 @@ export const filterCustomersByDistance = (customers, coordinates, maxDistance) =
   return customers.filter(customer => {
     const { latitude, longitude } = customer
     const distance = calculateDistanceBetweenPoints(coordinates, { latitude, longitude })
-    return distance < maxDistance
+    return distance <= maxDistance
   })
 }
 

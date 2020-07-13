@@ -19,7 +19,6 @@ const clearOutput = async (path) => {
     await promises.stat(path)
     await promises.unlink(path)
   } catch (err) {
-    console.log(err.code)
     if (err.code !== 'ENOENT') throw err
   }
 }

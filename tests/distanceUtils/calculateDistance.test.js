@@ -1,14 +1,21 @@
 import { calculateDistanceBetweenPoints } from '../../distanceUtils'
+import testCoordinates from '../distanceUtils/testData/coordinates.json'
 
-describe('Calculating distance', () => {
+describe.each(testCoordinates)('Calculating distance', (coordinates) => {
+  const officeCoordinates = { latitude: 53.339428, longitude: -6.257664 }
+
   test('Should calculate distance', () => {
-    const distance = calculateDistanceBetweenPoints({ latitude: 52.986375, longitude: 6.043701 }, { latitude: 53.339428, longitude: 6.257664 })
-    expect(distance).toEqual(41.76872550099624)
+    const { latitude, longitude, distance: expectedDistance } = coordinates
+
+    const distance = calculateDistanceBetweenPoints({ latitude, longitude }, officeCoordinates)
+    expect(distance).toEqual(expectedDistance)
   })
   
   test('Distance should be the same regardless of order', () => {
-    const distance = calculateDistanceBetweenPoints({ latitude: 53.339428, longitude: 6.257664 }, { latitude: 52.986375, longitude: 6.043701 })
-    const reverseDistance = calculateDistanceBetweenPoints({ latitude: 52.986375, longitude: 6.043701 }, { latitude: 53.339428, longitude: 6.257664 })
+    const { latitude, longitude} = coordinates
+
+    const distance = calculateDistanceBetweenPoints({ latitude, longitude }, officeCoordinates)
+    const reverseDistance = calculateDistanceBetweenPoints(officeCoordinates, { latitude, longitude })
     expect(distance).toEqual(reverseDistance)
   })
-}) 
+})
